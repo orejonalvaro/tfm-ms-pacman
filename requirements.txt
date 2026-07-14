@@ -1,0 +1,8 @@
+gymnasium[atari,accept-rom-license]>=1.0.0
+ale-py>=0.10.0
+stable-baselines3[extra]>=2.5.0
+numpy>=1.26.0
+pandas>=2.0.0
+matplotlib>=3.8.0
+pyyaml>=6.0.0
+tensorboard>=2.14.0

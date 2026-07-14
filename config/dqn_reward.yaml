@@ -1,0 +1,65 @@
+# dqn_reward.yaml
+#
+# Configuration file for the reward-shaped DQN agent.
+#
+# This file documents the main training parameters used in train_dqn_reward.py.
+# The values are kept here to improve reproducibility and experiment tracking.
+
+experiment:
+  agent_name: "dqn_reward"
+  environment_id: "ALE/MsPacman-v5"
+  description: "DQN agent trained with reward shaping based on step penalty and life-loss penalty."
+
+training:
+  total_timesteps_test: 10000
+  total_timesteps_initial_experiment: 100000
+  total_timesteps_final_experiment: 1000000
+  seed: 123
+  n_envs: 1
+  device: "auto"
+
+environment:
+  noop_max: 30
+  frame_skip: 4
+  screen_size: 84
+  terminal_on_life_loss: false
+  grayscale_obs: true
+  grayscale_newaxis: true
+  scale_obs: false
+  repeat_action_probability: 0.0
+  full_action_space: false
+
+wrappers:
+  vec_monitor: true
+  frame_stack: 4
+  transpose_image: true
+  reward_shaping: true
+
+reward_shaping:
+  formula: "shaped_reward = original_reward - step_penalty_alpha - life_loss_penalty_beta * lives_lost_step"
+  step_penalty_alpha: 0.01
+  life_loss_penalty_beta: 1.0
+  life_detection_method: "env.unwrapped.ale.lives()"
+  assumes_info_lives: false
+
+model:
+  algorithm: "DQN"
+  policy: "CnnPolicy"
+  learning_rate: 0.0001
+  buffer_size: 50000
+  learning_starts: 1000
+  batch_size: 32
+  tau: 1.0
+  gamma: 0.99
+  train_freq: 4
+  gradient_steps: 1
+  target_update_interval: 1000
+  exploration_fraction: 0.10
+  exploration_initial_eps: 1.0
+  exploration_final_eps: 0.05
+
+paths:
+  model_path: "models/dqn_reward_mspacman.zip"
+  tensorboard_log: "logs/tensorboard"
+  checkpoint_dir: "logs/checkpoints"
+  evaluation_csv: "results/dqn_reward_results.csv"

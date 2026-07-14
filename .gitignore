@@ -1,0 +1,23 @@
+﻿# Python / local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+
+# Training by-products
+logs/
+**/logs/
+*.tfevents.*
+
+# Temporary files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Manual ad-hoc outputs
+results/manual_eval/
