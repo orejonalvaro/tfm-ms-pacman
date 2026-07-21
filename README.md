@@ -45,7 +45,6 @@ evaluación no se modifica la recompensa, para que todos los agentes sean compar
 |-- analyze_results.py
 |-- config/
 |-- wrappers/
-|-- docs/
 |-- models/
 |   |-- 500k/
 |   |-- 1m/
@@ -66,7 +65,6 @@ evaluación no se modifica la recompensa, para que todos los agentes sean compar
 - `models/`: modelos entrenados conservados para la memoria.
 - `results/`: CSV de evaluación y comparación.
 - `figures/`: gráficas generadas a partir de los resultados.
-- `docs/`: notas resumidas del protocolo experimental y resultados.
 
 ## Instalación
 
